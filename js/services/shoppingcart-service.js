@@ -107,7 +107,8 @@ class ShoppingCartService {
 
 
 
-        contentDiv.appendChild(cartButtons);
+        cartHeader.appendChild(cartButtons);
+        contentDiv.appendChild(cartHeader);
         main.appendChild(contentDiv);
 
         // Check if the cart has items
@@ -124,7 +125,8 @@ class ShoppingCartService {
             contentDiv.appendChild(emptyMessage);
 
             // Hide the "Clear Cart" button since the cart is empty
-            button.style.display = "none";
+            checkoutCartButton.style.display = "none";
+            clearCartButton.style.display = "none";
         }
     }
 
