@@ -4,11 +4,11 @@ header
     justify-content: space-between;
     align-items: center;
 
-    height: 10vh;
+    height: 15vh;
 
     padding: 5px 15px;
-    border-bottom: solid 1px #555;
-    box-shadow: 5px 2px #eee;
+    border-bottom: solid 1px #1b1e21;
+    box-shadow: 5px 2px #1b1e21;
 }
 
 header img
@@ -91,7 +91,7 @@ main > .content-form #cart-buttons
 main > .content-form .cart-header,
 main > .content-form .cart-item
 {
-    border-bottom: solid 1px #ccc;
+    border-bottom: solid 1px #1b1e21;
 }
 
 .content-form .photo
@@ -104,7 +104,7 @@ main > .content-form .cart-item
 {
     width: 100px;
     cursor: pointer;
-    border: solid 1px #ccc;
+    border: solid 1px #1b1e21;
 }
 
 .content-form .cart-header
@@ -127,7 +127,7 @@ main > .content-form .cart-item
 
     justify-content: space-between;
     /*width: 30%;*/
-    border: solid 1px #ccc;
+    border: solid 2px #1b1e21;
     padding: 5px;
     border-radius: 5px;
     margin: 5px;
@@ -142,7 +142,7 @@ main > .content-form .cart-item
 {
     width: 33%;
     cursor: pointer;
-    border: solid 1px #ccc;
+    border: solid 1px #1b1e21;
 }
 
 .product .price
@@ -206,5 +206,18 @@ main > .content-form .cart-item
 .alert
 {
     margin-bottom: 2px !important;
+}
+
+.form-floating > .form-select
+{
+    background: #1b1e21;
+}
+
+.form-floating > .form-select option {
+    color: #FFFFFF;
+}
+
+#catLabel {
+    background-color: transparent !important;
 }
 
