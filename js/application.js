@@ -1,3 +1,8 @@
+function showCheckoutForm()
+{
+    templateBuilder.build('checkout-form',{},'login');
+}
+
 function showRegisterForm()
 {
     templateBuilder.build('register-form', {}, 'login');

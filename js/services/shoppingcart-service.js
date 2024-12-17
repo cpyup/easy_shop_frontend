@@ -85,15 +85,29 @@ class ShoppingCartService {
         h1.innerText = "Cart";
         cartHeader.appendChild(h1);
 
-        // Create the "Clear Cart" button
-        const button = document.createElement("button");
-        button.classList.add("btn");
-        button.classList.add("btn-danger");
-        button.innerText = "Clear";
-        button.addEventListener("click", () => this.clearCart());
-        cartHeader.appendChild(button);
+        const cartButtons = document.createElement("div");
+        cartButtons.id = "cart-buttons";
+        cartButtons.classList.add("cart-buttons");
 
-        contentDiv.appendChild(cartHeader);
+        // Create the "Clear Cart" button
+        const clearCartButton = document.createElement("button");
+        clearCartButton.classList.add("btn");
+        clearCartButton.classList.add("btn-danger");
+        clearCartButton.innerText = "Clear";
+        clearCartButton.addEventListener("click", () => this.clearCart());
+        cartButtons.appendChild(clearCartButton);
+
+        // Create the "Checkout" button
+        const checkoutCartButton = document.createElement("button");
+        checkoutCartButton.classList.add("btn");
+        checkoutCartButton.classList.add("btn-primary");
+        checkoutCartButton.innerText = "Checkout";
+        checkoutCartButton.addEventListener("click", () => showCheckoutForm());
+        cartButtons.appendChild(checkoutCartButton);
+
+
+
+        contentDiv.appendChild(cartButtons);
         main.appendChild(contentDiv);
 
         // Check if the cart has items
