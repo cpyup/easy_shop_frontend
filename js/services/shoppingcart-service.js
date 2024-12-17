@@ -66,43 +66,54 @@ class ShoppingCartService {
 
     }
 
-    loadCartPage()
-    {
-        // templateBuilder.build("cart", this.cart, "main");
-
-        const main = document.getElementById("main")
-        main.innerHTML = "";
+    loadCartPage() {
+        const main = document.getElementById("main");
+        main.innerHTML = "";  // Clear the main container
 
         let div = document.createElement("div");
-        div.classList="filter-box";
+        div.classList = "filter-box";
         main.appendChild(div);
 
-        const contentDiv = document.createElement("div")
+        const contentDiv = document.createElement("div");
         contentDiv.id = "content";
         contentDiv.classList.add("content-form");
 
-        const cartHeader = document.createElement("div")
-        cartHeader.classList.add("cart-header")
+        const cartHeader = document.createElement("div");
+        cartHeader.classList.add("cart-header");
 
-        const h1 = document.createElement("h1")
+        const h1 = document.createElement("h1");
         h1.innerText = "Cart";
         cartHeader.appendChild(h1);
 
+        // Create the "Clear Cart" button
         const button = document.createElement("button");
-        button.classList.add("btn")
-        button.classList.add("btn-danger")
+        button.classList.add("btn");
+        button.classList.add("btn-danger");
         button.innerText = "Clear";
         button.addEventListener("click", () => this.clearCart());
-        cartHeader.appendChild(button)
+        cartHeader.appendChild(button);
 
-        contentDiv.appendChild(cartHeader)
+        contentDiv.appendChild(cartHeader);
         main.appendChild(contentDiv);
 
-        // let parent = document.getElementById("cart-item-list");
-        this.cart.items.forEach(item => {
-            this.buildItem(item, contentDiv)
-        });
+        // Check if the cart has items
+        if (this.cart.items && Object.keys(this.cart.items).length > 0) {
+            // Cart is not empty, populate with items
+            this.cart.items.forEach(item => {
+                this.buildItem(item, contentDiv);  // Build each item in the cart
+            });
+        } else {
+            // Cart is empty, show a message
+            const emptyMessage = document.createElement("div");
+            emptyMessage.classList.add("empty-cart-message");
+            emptyMessage.innerHTML = "<p>Your cart is empty.</p>";
+            contentDiv.appendChild(emptyMessage);
+
+            // Hide the "Clear Cart" button since the cart is empty
+            button.style.display = "none";
+        }
     }
+
 
     buildItem(item, parent)
     {
