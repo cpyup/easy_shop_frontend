@@ -176,13 +176,17 @@ class ShoppingCartService {
     updateCartDisplay()
     {
         try {
-            const itemCount = this.cart.items.length;
-            const cartControl = document.getElementById("cart-items")
+            let totalQuantity = 0;
 
-            cartControl.innerText = itemCount;
+            for(let itemId in this.cart.items){
+                totalQuantity += this.cart.items[itemId].quantity;
+            }
+
+            const cartControl = document.getElementById("cart-items")
+            cartControl.innerText = totalQuantity;
         }
         catch (e) {
-
+            console.error("Error updating cart count:",e);
         }
     }
 }
