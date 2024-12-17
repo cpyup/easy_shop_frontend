@@ -1,3 +1,8 @@
+function showRegisterForm()
+{
+    templateBuilder.build('register-form', {}, 'login');
+}
+
 
 function showLoginForm()
 {
@@ -7,6 +12,20 @@ function showLoginForm()
 function hideModalForm()
 {
     templateBuilder.clear('login');
+}
+
+function register()
+{
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const confirmPass = document.getElementById("confirm-password").value;
+
+    userService.register(username,password,confirmPass);
+    hideModalForm();
+
+    setTimeout(function(){
+        userService.login(username,password);
+    },500);
 }
 
 function login()
