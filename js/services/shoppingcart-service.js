@@ -124,7 +124,7 @@ class ShoppingCartService {
             emptyMessage.innerHTML = "<p>Your cart is empty.</p>";
             contentDiv.appendChild(emptyMessage);
 
-            // Hide the "Clear Cart" button since the cart is empty
+            // Hide the header buttons
             checkoutCartButton.style.display = "none";
             clearCartButton.style.display = "none";
         }
@@ -199,6 +199,33 @@ class ShoppingCartService {
                  templateBuilder.append("error", data, "errors")
              })
     }
+
+    checkoutCart()
+        {
+
+            const url = `${config.baseUrl}/orders`;
+
+            axios.post(url)
+                 .then(response => {
+                     this.cart = {
+                         items: [],
+                         total: 0
+                     }
+
+                     this.cart.total = 0;
+                     this.updateCartDisplay()
+                     this.loadCartPage()
+
+                 })
+                 .catch(error => {
+
+                     const data = {
+                         error: "Checkout cart failed."
+                     };
+
+                     templateBuilder.append("error", data, "errors")
+                 })
+        }
 
     updateCartDisplay()
     {
