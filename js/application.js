@@ -1,3 +1,8 @@
+function showAddProducts()
+{
+    templateBuilder.build("add-product-form", {}, "main");
+}
+
 function showCategorySelectForm()
 {
     templateBuilder.build('category-select-form',{},'login');
@@ -112,6 +117,31 @@ function saveProfile()
     };
 
     profileService.updateProfile(profile);
+}
+
+function saveNewProduct()
+{
+        const name = document.getElementById("productName").value;
+        const price = parseInt(document.getElementById("price").value);
+        const categoryId = parseInt(document.getElementById("categoryId").value);
+        const description = document.getElementById("description").value;
+        const color = document.getElementById("color").value;
+        const imageUrl = document.getElementById("imageUrl").value;
+        const stock = parseInt(document.getElementById("stock").value);
+        const featured = document.getElementById("featured").checked;
+
+        const product = {
+            name,
+            price,
+            categoryId,
+            description,
+            color,
+            stock,
+            imageUrl,
+            featured
+        };
+
+        productService.addNewProduct(product);
 }
 
 function saveProduct()

@@ -147,6 +147,34 @@ class ProductService {
         }
     }
 
+    addProductForm()
+    {
+        templateBuilder.build("add-product-form", {}, "main");
+    }
+
+    addNewProduct(product)
+    {
+       const url = `${config.baseUrl}/products`;
+
+               axios.post(url, product, {
+                   headers: {
+                       'Content-Type': 'application/json'
+                   }
+               })
+               .then(() => {
+                   const data = {
+                       message: "New product has been added."
+                   };
+                   templateBuilder.append("message", data, "errors");
+               })
+               .catch(error => {
+                   const data = {
+                       error: "Adding new product failed."
+                   };
+                   templateBuilder.append("error", data, "errors");
+               });
+    }
+
     // Used to load the selected product to the editing form
     editProduct(productId)
         {

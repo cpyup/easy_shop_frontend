@@ -1,0 +1,43 @@
+
+<div class="filter-box">
+  &nbsp;
+</div>
+
+<div id="content" class="content-form">
+  <h1>Add New Product</h1>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="productName" value='Name'>
+    <label for="productName">Product Name</label>
+    </div>
+
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="price" value=0.00>
+    <label for="price">Product Price</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="categoryId" value=1>
+    <label for="categoryId">Category ID</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="description" value='Description'>
+    <label for="description">Description</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="color" value='Color'>
+    <label for="color">Color</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="imageUrl" value='Image URL'>
+    <label for="imageUrl">Image URL</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="stock" value=50>
+    <label for="stock">Current Inventory</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="checkbox" id="featured" value=false>
+    <label for="featured">Featured Item</label>
+  </div>
+
+  <button class="btn btn-outline-success" onclick="saveNewProduct()">Add Product</button>
+</div>
