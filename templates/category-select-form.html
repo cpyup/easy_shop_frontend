@@ -1,0 +1,29 @@
+<div id="category-select-form" class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Select Category To Edit</h5>
+        <button type="button" class="btn-close" onclick="hideModalForm()" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-floating mb-3">
+          <select name="" id="category-select" class="form-select"
+                  onchange="setCategory(this)"
+          >
+            <option value="0">None</option>
+          </select>
+          <label for="category-select" id="catLabel">Category</label>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="hideModalForm()">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="editCategory(document.getElementById('category-select').value);hideModalForm();">Submit</button>
+      </div>
+    </div>
+  </div>
+
+</div>

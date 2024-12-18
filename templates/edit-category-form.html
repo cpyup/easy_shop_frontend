@@ -1,0 +1,21 @@
+
+<div class="filter-box">
+  &nbsp;
+
+</div>
+<div id="content" class="content-form">
+  <h1>Edit Product</h1>
+  <!-- Hidden input field for categoryId -->
+  <input type="hidden" id="categoryId" value="{{categoryId}}">
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="categoryName" value='{{name}}'>
+    <label for="categoryName">Product Name</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="description" value='{{description}}'>
+    <label for="description">Description</label>
+  </div>
+
+  <button class="btn btn-outline-danger" onclick="saveCategory()">Update</button>
+  <button class="btn btn-outline-danger" onclick="deleteCategory()">Delete</button>
+</div>

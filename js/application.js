@@ -1,3 +1,9 @@
+function showCategorySelectForm()
+{
+    templateBuilder.build('category-select-form',{},'login');
+    categoryService.getAllCategories(loadCategories);
+}
+
 function showCheckoutForm()
 {
     templateBuilder.build('checkout-form',{},'login');
@@ -156,6 +162,31 @@ function setCategory(control)
     productService.addCategoryFilter(control.value);
     productService.search();
 
+}
+
+function editCategory(categoryId)
+{
+    categoryService.editCategory(categoryId);
+}
+
+function saveCategory()
+{
+    const categoryId = parseInt(document.getElementById("categoryId").value);
+    const name = document.getElementById("categoryName").value;
+    const description = document.getElementById("description").value;
+
+    const category = {
+        name,
+        description
+    };
+
+    categoryService.updateCategory(categoryId,category);
+}
+
+function deleteCategory()
+{
+    const categoryId = parseInt(document.getElementById("categoryId").value);
+    categoryService.deleteCategory(categoryId);
 }
 
 function setColor(control)
