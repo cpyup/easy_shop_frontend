@@ -75,7 +75,8 @@ class UserService {
         const user = {
                 username: this.getUserName(),
                 loggedin: this.isLoggedIn(),
-                loggedout: !this.isLoggedIn()
+                loggedout: !this.isLoggedIn(),
+                isAdmin: this.getUserName() === "admin"
             };
 
         templateBuilder.build('header', user, 'header-user');
