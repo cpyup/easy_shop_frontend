@@ -229,3 +229,7 @@ main > .content-form .cart-item
     background-color: transparent !important;
 }
 
+.edit-button {
+    margin-left: auto;
+}
+

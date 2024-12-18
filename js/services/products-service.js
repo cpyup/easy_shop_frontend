@@ -119,12 +119,25 @@ class ProductService {
     enableButtons()
     {
         const buttons = [...document.querySelectorAll(".add-button")];
+        const adminButtons = [...document.querySelectorAll(".edit-button")];
 
         if(userService.isLoggedIn())
         {
             buttons.forEach(button => {
                 button.classList.remove("invisible")
             });
+
+            if(userService.isAdmin())
+            {
+                adminButtons.forEach(button => {
+                                button.classList.remove("invisible")
+                            });
+            }else{
+                adminButtons.forEach(button => {
+                                button.classList.add("invisible")
+                            });
+            }
+
         }
         else
         {

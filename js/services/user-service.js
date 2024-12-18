@@ -65,6 +65,11 @@ class UserService {
         return this.currentUser.token !== undefined;
     }
 
+    isAdmin()
+    {
+        return this.isLoggedIn() ? this.currentUser.username === "admin" : false;
+    }
+
     getCurrentUser()
     {
         return this.currentUser;
