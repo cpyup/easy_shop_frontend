@@ -92,7 +92,7 @@ class ShoppingCartService {
         // Create the "Clear Cart" button
         const clearCartButton = document.createElement("button");
         clearCartButton.classList.add("btn");
-        clearCartButton.classList.add("btn-secondary");
+        clearCartButton.classList.add("btn-outline-danger");
         clearCartButton.innerText = "Clear";
         clearCartButton.addEventListener("click", () => this.clearCart());
         cartButtons.appendChild(clearCartButton);
@@ -131,42 +131,114 @@ class ShoppingCartService {
     }
 
 
-    buildItem(item, parent)
-    {
+    buildItem(item, parent) {
         let outerDiv = document.createElement("div");
         outerDiv.classList.add("cart-item");
 
+        outerDiv.setAttribute("data-product-id", item.product.productId); // Storing productId here
+
         let div = document.createElement("div");
         outerDiv.appendChild(div);
-        let h4 = document.createElement("h4")
+
+        let h4 = document.createElement("h4");
         h4.innerText = item.product.name;
         div.appendChild(h4);
 
         let photoDiv = document.createElement("div");
-        photoDiv.classList.add("photo")
+        photoDiv.classList.add("photo");
+
         let img = document.createElement("img");
-        img.src = `/images/products/${item.product.imageUrl}`
+        img.src = `/images/products/${item.product.imageUrl}`;
         img.addEventListener("click", () => {
-            showImageDetailForm(item.product.name, img.src)
-        })
-        photoDiv.appendChild(img)
+            showImageDetailForm(item.product.name, img.src);
+        });
+        photoDiv.appendChild(img);
+
         let priceH4 = document.createElement("h4");
         priceH4.classList.add("price");
         priceH4.innerText = `$${item.product.price}`;
         photoDiv.appendChild(priceH4);
+
         outerDiv.appendChild(photoDiv);
 
         let descriptionDiv = document.createElement("div");
         descriptionDiv.innerText = item.product.description;
         outerDiv.appendChild(descriptionDiv);
 
-        let quantityDiv = document.createElement("div")
-        quantityDiv.innerText = `Quantity: ${item.quantity}`;
-        outerDiv.appendChild(quantityDiv)
+        // Create an input for quantity
+        let quantityDiv = document.createElement("div");
 
+        let quantityInput = document.createElement("input");
+        quantityInput.type = "number";
+        quantityInput.value = item.quantity;  // Set initial value to current quantity
+        quantityInput.min = 1;
+        quantityInput.addEventListener("input", () => {
+            let newQuantity = parseInt(quantityInput.value);
+            let productId = parseInt(outerDiv.getAttribute("data-product-id"),10);
+
+
+            this.updateQuantity(productId, newQuantity);
+        });
+
+        quantityDiv.appendChild(quantityInput);
+        outerDiv.appendChild(quantityDiv);
 
         parent.appendChild(outerDiv);
     }
+
+    updateQuantity(productId,quantity){
+
+            const url = `${config.baseUrl}/cart/products/${productId}`;
+
+            const updateData = {
+                    lineItemId: 0,
+                    orderId: 0,
+                    productId: productId,
+                    price: 0,
+                    quantity: quantity,      // Update quantity is all that matters
+                    discount: 0.00
+                };
+
+            axios.put(url,updateData,{
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    this.setCart(response.data)
+                    this.updateCartDisplay()
+                })
+                .catch(error => {
+
+                    const data = {
+                       error: "Update cart failed."
+                    };
+
+                templateBuilder.append("error", data, "errors");
+            });
+        }
+
+    /*function updateQuantityOnBackend(productId, newQuantity) {
+        // Example function to send the updated quantity to the backend
+        fetch('/update-quantity', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                productId: productId,
+                quantity: newQuantity
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Quantity updated successfully:', data);
+        })
+        .catch(error => {
+            console.error('Error updating quantity:', error);
+        });
+    }*/
+
 
     clearCart()
     {
