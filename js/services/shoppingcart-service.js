@@ -299,20 +299,21 @@ class ShoppingCartService {
                  })
         }
 
-    updateCartDisplay()
-    {
+    updateCartDisplay() {
         try {
-            let totalQuantity = 0;
+            setTimeout(() => {
+                let totalQuantity = 0;
 
-            for(let itemId in this.cart.items){
-                totalQuantity += this.cart.items[itemId].quantity;
-            }
+                for (let itemId in this.cart.items) {
+                    totalQuantity += this.cart.items[itemId].quantity;
+                }
 
-            const cartControl = document.getElementById("cart-items")
-            cartControl.innerText = totalQuantity;
+                const cartControl = document.getElementById("cart-items");
+                cartControl.innerText = totalQuantity;
+            }, 500);
         }
         catch (e) {
-            console.error("Error updating cart count:",e);
+            console.error("Error updating cart count:", e);
         }
     }
 }
