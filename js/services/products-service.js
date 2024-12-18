@@ -187,6 +187,26 @@ class ProductService {
             templateBuilder.append("error", data, "errors");
         });
     }
+
+    deleteProduct(productId) {
+            const url = `${config.baseUrl}/products/${productId}`;
+
+            axios.delete(url)
+                .then(response => {
+                const data = {
+                    message: "The product has been deleted."
+                };
+                templateBuilder.append("message", data, "errors");
+                loadHome();
+            })
+            .catch(error => {
+                const data = {
+                    error: "Deleting product failed."
+                };
+
+                    templateBuilder.append("error", data, "errors")
+                })
+            }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

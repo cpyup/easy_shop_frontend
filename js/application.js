@@ -134,6 +134,12 @@ function saveProduct()
         productService.updateProduct(productId,product);
 }
 
+function deleteProduct()
+{
+    const productId = parseInt(document.getElementById("productId").value);
+    productService.deleteProduct(productId);
+}
+
 function showCart()
 {
     cartService.loadCartPage();
