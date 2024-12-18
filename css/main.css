@@ -84,7 +84,10 @@ main > .content-form
 {
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding-right: 20px;
+    padding-bottom: 50px;
 }
 
 main > .content-form #cart-buttons
@@ -95,9 +98,14 @@ main > .content-form #cart-buttons
     width: 100%;
 }
 
-main > .content-form .cart-header,
+main > .content-form .cart-header
+{
+    border-bottom: solid 1px #1b1e21;
+}
+
 main > .content-form .cart-item
 {
+    padding-bottom: 5px;
     border-bottom: solid 1px #1b1e21;
 }
 
