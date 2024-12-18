@@ -147,11 +147,47 @@ class ProductService {
         }
     }
 
+    // Used to load the selected product to the editing form
+    editProduct(productId)
+        {
+            const url = `${config.baseUrl}/products/${productId}`;
+
+            axios.get(url)
+                 .then(response => {
+                     templateBuilder.build("edit-product-form", response.data, "main")
+                 })
+                 .catch(error => {
+                     const data = {
+                         error: "Loading product failed."
+                     };
+
+                     templateBuilder.append("error", data, "errors")
+                 })
+        }
+
+    // Used to submit the updated product from the editing form
+    updateProduct(productId, product) {
+        const url = `${config.baseUrl}/products/${productId}`;
+
+        axios.put(url, product, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(() => {
+            const data = {
+                message: "The product has been updated."
+            };
+            templateBuilder.append("message", data, "errors");
+        })
+        .catch(error => {
+            const data = {
+                error: "Product update failed."
+            };
+            templateBuilder.append("error", data, "errors");
+        });
+    }
 }
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     productService = new ProductService();

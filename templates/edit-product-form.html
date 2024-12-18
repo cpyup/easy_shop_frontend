@@ -1,0 +1,44 @@
+
+<div class="filter-box">
+  &nbsp;
+
+</div>
+<div id="content" class="content-form">
+  <h1>Edit Product</h1>
+  <!-- Hidden input field for productId -->
+  <input type="hidden" id="productId" value="{{productId}}">
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="productName" value='{{name}}'>
+    <label for="productName">Product Name</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="price" value='{{price}}'>
+    <label for="price">Product Price</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="categoryId" value='{{categoryId}}'>
+    <label for="categoryId">Category ID</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="description" value='{{description}}'>
+    <label for="description">Description</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="color" value='{{color}}'>
+    <label for="color">Color</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="imageUrl" value='{{imageUrl}}'>
+    <label for="imageUrl">Image URL</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="stock" value='{{stock}}'>
+    <label for="stock">Current Inventory</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="checkbox" id="featured" value='{{featured}}'>
+    <label for="featured">Featured Item</label>
+  </div>
+
+  <button class="btn btn-outline-danger" onclick="saveProduct()">Update</button>
+</div>
