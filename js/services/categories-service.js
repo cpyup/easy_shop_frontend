@@ -16,7 +16,7 @@ class CategoryService {
                 };
                 templateBuilder.append("error", data, "errors");
             }
-        }, 3000);
+        }, 500);
 
         return axios.get(url)
             .then(response => {
