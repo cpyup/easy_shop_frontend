@@ -92,7 +92,7 @@ class ShoppingCartService {
         // Create the "Clear Cart" button
         const clearCartButton = document.createElement("button");
         clearCartButton.classList.add("btn");
-        clearCartButton.classList.add("btn-danger");
+        clearCartButton.classList.add("btn-secondary");
         clearCartButton.innerText = "Clear";
         clearCartButton.addEventListener("click", () => this.clearCart());
         cartButtons.appendChild(clearCartButton);
