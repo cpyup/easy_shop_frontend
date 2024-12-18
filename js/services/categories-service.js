@@ -55,6 +55,29 @@ class CategoryService {
                      })
             }
 
+            addCategory(category)
+            {
+                const url = `${config.baseUrl}/categories`;
+
+                            axios.post(url, category, {
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            .then(() => {
+                                const data = {
+                                    message: "The category has been added."
+                                };
+                                templateBuilder.append("message", data, "errors");
+                            })
+                            .catch(error => {
+                                const data = {
+                                    error: "Adding category failed."
+                                };
+                                templateBuilder.append("error", data, "errors");
+                            });
+            }
+
         // Used to submit the updated category from the editing form
         updateCategory(categoryId, category) {
             const url = `${config.baseUrl}/categories/${categoryId}`;

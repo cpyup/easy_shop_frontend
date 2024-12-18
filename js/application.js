@@ -1,3 +1,8 @@
+function showAddCategory()
+{
+    templateBuilder.build("add-category-form", {}, "main");
+}
+
 function showAddProducts()
 {
     templateBuilder.build("add-product-form", {}, "main");
@@ -117,6 +122,20 @@ function saveProfile()
     };
 
     profileService.updateProfile(profile);
+}
+
+function saveNewCategory()
+{
+
+        const name = document.getElementById("categoryName").value;
+        const description = document.getElementById("description").value;
+
+        const category = {
+            name,
+            description
+        };
+
+        categoryService.addCategory(category);
 }
 
 function saveNewProduct()
