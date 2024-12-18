@@ -28,9 +28,7 @@ function register()
     userService.register(username,password,confirmPass);
     hideModalForm();
 
-    setTimeout(function(){
-        userService.login(username,password);
-    },500);
+
 }
 
 function login()

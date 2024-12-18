@@ -95,6 +95,9 @@ class UserService {
         axios.post(url, register)
              .then(response => {
                  console.log(response.data)
+                 setTimeout(function(){
+                         login(username,password);
+                     },500);
              })
             .catch(error => {
 
