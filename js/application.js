@@ -9,10 +9,30 @@ function showRegisterForm()
 }
 
 
-function showLoginForm()
-{
-    templateBuilder.build('login-form', {}, 'login');
+function showLoginForm() {
+    templateBuilder.build('login-form', {}, 'login', setupEnterKeyListener);
 }
+
+// This function will be called after the form is loaded.
+function setupEnterKeyListener() {
+    // Find all modal dialogs
+    const modals = document.querySelectorAll('.modal');
+
+    modals.forEach(modal => {
+        const loginButton = modal.querySelector('.btn.btn-primary');
+
+        // Add event listener to capture the Enter key press inside each modal
+        modal.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent form submission to avoid page reload
+                if (loginButton) {
+                    loginButton.click(); // Trigger the click on the primary button
+                }
+            }
+        });
+    });
+}
+
 
 function hideModalForm()
 {
@@ -171,6 +191,6 @@ function closeError(control)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
     loadHome();
+
 });
