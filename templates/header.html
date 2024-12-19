@@ -1,37 +1,83 @@
-
+<!-- Navbar for logged-in users -->
 {{#loggedin}}
-<div id="links">
-    <img src="/images/additions/ezpz.gif" alt="EzShop">
-    <a href="#" onclick="loadHome()">Home</a>
-    <a href="#" onclick="editProfile()">Profile</a>
-    <a href="#" onclick="showCart()">View Cart</a>
+<img src="/images/additions/ezpz.gif" alt="EzShop">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
 
-    {{#isAdmin}}
-    <a href="#" onclick="showCategorySelectForm()">Edit Categories</a>
-    <a href="#" onclick="showAddCategory()">Add Categories</a>
-    <a href="#" onclick="showAddProducts()">Add Products</a>
-    {{/isAdmin}}
 
-</div>
+        <!-- Navbar toggler for mobile view -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<div>
-    Welcome&nbsp;<span style="font-weight: bold">{{username}}</span>&nbsp;|&nbsp;<a href="#" onclick="userService.logout();loadHome();">logout</a>
-    <div class="cart" onclick="showCart()">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <div id="cart-items">0</div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadHome()">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="editProfile()">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showCart()">View Cart</a>
+                </li>
+
+                {{#isAdmin}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminOptions" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Administrator Options
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="adminOptions">
+                        <li><a class="dropdown-item" href="#" onclick="showCategorySelectForm()">Edit Categories</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showAddCategory()">Add Categories</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showAddProducts()">Add Products</a></li>
+                    </ul>
+                </li>
+                {{/isAdmin}}
+            </ul>
+            <div class="d-flex align-items-center">
+                <span class="navbar-text">
+                    Welcome <strong>{{username}}</strong>
+                </span>
+                <a class="nav-link" href="#" onclick="userService.logout();loadHome();">Logout</a>
+
+                <!-- Cart Icon -->
+                <div class="cart" onclick="showCart()" style="cursor: pointer; margin-left: 15px;">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div id="cart-items" class="badge bg-danger">0</div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</nav>
+
 {{/loggedin}}
+
+<!-- Navbar for logged-out users -->
 {{#loggedout}}
-<div id="links">
-    <img src="/images/additions/ezpz.gif" alt="EzShop">
-    <a href="#" onclick="loadHome()">Home</a>
-    <a href="#" onclick="showRegisterForm();return false;">Register</a>
-</div>
+<img src="/images/additions/ezpz.gif" alt="EzShop">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
 
-<div>
-    <a href="#"  onclick="showLoginForm();loadHome();">Login</a>
 
-</div>
+        <!-- Navbar toggler for mobile view -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadHome()">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showRegisterForm();return false;">Register</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a class="nav-link" href="#" onclick="showLoginForm();loadHome();">Login</a>
+            </div>
+        </div>
+    </div>
+</nav>
 {{/loggedout}}
-

@@ -62,7 +62,6 @@ function register()
     const confirmPass = document.getElementById("confirm-password").value;
 
     userService.register(username,password,confirmPass);
-    hideModalForm();
 
 
 }
