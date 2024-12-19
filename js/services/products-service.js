@@ -87,6 +87,24 @@ class ProductService {
         this.filter.color = undefined;
     }
 
+    getStockById(productId)
+    {
+        const url = `${config.baseUrl}/products/${productId}`;
+
+        axios.get(url)
+                     .then(response => {
+                         return(response.data.stock);
+                     })
+                    .catch(error => {
+
+                        const data = {
+                            error: "Searching product failed."
+                        };
+
+                        templateBuilder.append("error", data, "errors")
+                    });
+    }
+
     search()
     {
         const url = `${config.baseUrl}/products${this.filter.queryString()}`;
@@ -120,11 +138,13 @@ class ProductService {
     {
         const buttons = [...document.querySelectorAll(".add-button")];
         const adminButtons = [...document.querySelectorAll(".edit-button")];
+        const stockValueElements = [...document.querySelectorAll(".stock-value")];
+
 
         if(userService.isLoggedIn())
         {
             buttons.forEach(button => {
-                button.classList.remove("invisible")
+                button.classList.remove("invisible");
             });
 
             if(userService.isAdmin())
@@ -137,6 +157,13 @@ class ProductService {
                                 button.classList.add("invisible")
                             });
             }
+
+            stockValueElements.forEach(element => {
+                            const stockInt = parseInt(element.textContent.replace(/\D/g, ''));
+                                if(stockInt === 0 || stockInt === null){
+                                    element.textContent = 'Out of Stock';
+                                }
+                            });
 
         }
         else
@@ -163,7 +190,7 @@ class ProductService {
                })
                .then(() => {
                    const data = {
-                       message: "New product has been added."
+                       message: "New     product has been added."
                    };
                    templateBuilder.append("message", data, "errors");
                })

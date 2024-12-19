@@ -11,7 +11,9 @@ function showAddProducts()
 function showCategorySelectForm()
 {
     templateBuilder.build('category-select-form',{},'login');
-    categoryService.getAllCategories(loadCategories);
+    setTimeout(()=>{
+        categoryService.getAllCategories(loadCategories);
+    },500);
 }
 
 function showCheckoutForm()
@@ -90,7 +92,10 @@ function loadHome()
     templateBuilder.build('home',{},'main')
 
     productService.search();
-    categoryService.getAllCategories(loadCategories);
+
+    setTimeout(() => {
+        categoryService.getAllCategories(loadCategories);
+    },500);
 }
 
 function editProfile()

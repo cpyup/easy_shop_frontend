@@ -7,7 +7,7 @@
                  onclick="showImageDetailForm(`{{name}}`,'/images/products/{{imageUrl}}')"
             >
           <h4 class="price">${{price}}</h4>
-            <input type="hidden" id="stock" value="{{stock}}">
+            <!--<input type="hidden" id="stock" value="{{stock}}">-->
         </div>
         <div>
             <p>{{description}}</p>
@@ -20,6 +20,8 @@
             <button class="btn btn-outline-danger" onclick="productService.editProduct({{productId}})">Edit Product</button>
         </div>
     </div>
-
+    <div class="stock-info">
+        <p class="stock-value" value="{{stock}}">Stock: {{stock}}</p>
+    </div>
 </div>
 {{/products}}
