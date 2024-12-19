@@ -158,12 +158,7 @@ class ProductService {
                             });
             }
 
-            stockValueElements.forEach(element => {
-                            const stockInt = parseInt(element.textContent.replace(/\D/g, ''));
-                                if(stockInt === 0 || stockInt === null){
-                                    element.textContent = 'Out of Stock';
-                                }
-                            });
+
 
         }
         else
@@ -171,7 +166,16 @@ class ProductService {
             buttons.forEach(button => {
                 button.classList.add("invisible")
             });
+            adminButtons.forEach(button => {
+                                            button.classList.add("invisible")
+                                        });
         }
+        stockValueElements.forEach(element => {
+                                    const stockInt = parseInt(element.textContent.replace(/\D/g, ''));
+                                        if(stockInt === 0 || stockInt === null){
+                                            element.textContent = 'Out of Stock';
+                                        }
+                                    });
     }
 
     addProductForm()
