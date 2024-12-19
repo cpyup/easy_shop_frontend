@@ -1,6 +1,6 @@
 <!-- Navbar for logged-in users -->
 {{#loggedin}}
-<img src="/images/additions/ezpz.gif" alt="EzShop">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
 
@@ -50,12 +50,13 @@
         </div>
     </div>
 </nav>
-
+<header id="header-user">
+    <img src="/images/additions/ezpz.gif" alt="EzShop">
+</header>
 {{/loggedin}}
 
 <!-- Navbar for logged-out users -->
 {{#loggedout}}
-<img src="/images/additions/ezpz.gif" alt="EzShop">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
 
@@ -80,4 +81,7 @@
         </div>
     </div>
 </nav>
+<header id="header-user">
+    <img src="/images/additions/ezpz.gif" alt="EzShop">
+</header>
 {{/loggedout}}

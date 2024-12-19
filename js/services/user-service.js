@@ -84,7 +84,7 @@ class UserService {
                 isAdmin: this.getUserName() === "admin"
             };
 
-        templateBuilder.build('header', user, 'header-user');
+        templateBuilder.build('header', user, 'nav');
     }
 
     register (username, password, confirm)
