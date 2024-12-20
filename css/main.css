@@ -191,7 +191,7 @@ main > .content-form .cart-item
     justify-content: center;
     position: absolute;
     top: 0;
-    background-color: #777777aa;
+    background-color: #1b1e21;
     width: 100vw;
     height: 100vh;
     z-index: 1000;
@@ -225,6 +225,7 @@ main > .content-form .cart-item
 .form-floating > .form-select
 {
     background: #1b1e21;
+    color: rgba(var(--bs-body-color-rgb), 0.65);
 }
 
 .form-floating > .form-select option {
