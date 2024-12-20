@@ -145,8 +145,8 @@ function saveNewCategory()
 function saveNewProduct()
 {
         const name = document.getElementById("productName").value;
-        const price = parseInt(document.getElementById("price").value);
-        const categoryId = parseInt(document.getElementById("categoryId").value);
+        const price = parseFloat(document.getElementById("price").value);
+        const categoryId = parseInt(document.getElementById("categoryId").value).toFixed(2);
         const description = document.getElementById("description").value;
         const color = document.getElementById("color").value;
         const imageUrl = document.getElementById("imageUrl").value;
@@ -171,7 +171,7 @@ function saveProduct()
 {
         const productId = parseInt(document.getElementById("productId").value);
         const name = document.getElementById("productName").value;
-        const price = parseInt(document.getElementById("price").value);
+        const price = parseFloat(document.getElementById("price").value).toFixed(2);
         const categoryId = parseInt(document.getElementById("categoryId").value);
         const description = document.getElementById("description").value;
         const color = document.getElementById("color").value;
